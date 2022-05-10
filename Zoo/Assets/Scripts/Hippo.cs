@@ -11,6 +11,11 @@ namespace Zoo
         [SerializeField]
         private Text text;
 
+        void Start()
+        {
+            EventManager.current.Eat += EatLeaves;
+            EventManager.current.SayHello += SayHello;
+        }
         public void SayHello()
         {
             Balloon.SetActive(true);
@@ -21,6 +26,12 @@ namespace Zoo
         {
             Balloon.SetActive(true);
             text.text = "munch munch lovely";
+        }
+
+        void OnDisable()
+        {
+            EventManager.current.Eat -= EatLeaves;
+            EventManager.current.SayHello -= SayHello;
         }
     }
 

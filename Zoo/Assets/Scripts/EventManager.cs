@@ -10,8 +10,8 @@ namespace Zoo
         public static EventManager current;
 
         // Start is called before the first frame update
-        private event Action Eat;
-        private event Action SayHello;
+        public event Action Eat;
+        public event Action SayHello;
 
         private void Awake()
         {
