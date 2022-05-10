@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 namespace Zoo
 {
-    class Hippo:MonoBehaviour
+    class Hippo : MonoBehaviour
     {
         public string name;
         [SerializeField]
@@ -11,16 +11,6 @@ namespace Zoo
         [SerializeField]
         private Text text;
 
-        public void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.Space)) {
-                SayHello();
-            }
-            if (Input.GetKeyDown(KeyCode.W))
-            {
-                EatLeaves();
-            }
-        }
         public void SayHello()
         {
             Balloon.SetActive(true);
@@ -33,5 +23,5 @@ namespace Zoo
             text.text = "munch munch lovely";
         }
     }
-    
+
 }

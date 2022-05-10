@@ -59,6 +59,7 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\DeactivateAfterSeconds.cs" />
     <Compile Include="Assets\Scripts\Debugger.cs" />
+    <Compile Include="Assets\Scripts\EventManager.cs" />
     <Compile Include="Assets\Scripts\Hippo.cs" />
     <Compile Include="Assets\Scripts\Lion.cs" />
     <Compile Include="Assets\Scripts\Pig.cs" />
