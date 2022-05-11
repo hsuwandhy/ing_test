@@ -10,7 +10,9 @@ namespace Zoo
         public static EventManager current;
 
         // Start is called before the first frame update
-        public event Action Eat;
+        public event Action EatMeat;
+        public event Action EatLeaves;
+        public event Action DoTrick;
         public event Action SayHello;
 
         private void Awake()
@@ -22,10 +24,22 @@ namespace Zoo
             DontDestroyOnLoad(gameObject);
         }
 
-        public void StartEating()
+        public void StartEatingMeat()
         {
-            //Invokes when at least 1 event is subscribed to the Eat event
-            Eat?.Invoke();
+            //Invokes when at least 1 event is subscribed to the EatMeat event
+            EatMeat?.Invoke();
+        }
+
+        public void StartEatingLeaves()
+        {
+            //Invokes when at least 1 event is subscribed to the EatMeat event
+            EatLeaves?.Invoke();
+        }
+
+        public void StartDoingTricks()
+        {
+            //Invokes when at least 1 event is subscribed to the EatMeat event
+            DoTrick?.Invoke();
         }
 
         public void StartStartTalking()

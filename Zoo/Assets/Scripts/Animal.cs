@@ -8,32 +8,54 @@ namespace Zoo
 {
     public class Animal : MonoBehaviour
     {
-        virtual public string name;
+        public string name;
         [SerializeField]
-        virtual private GameObject Balloon;
+        private GameObject Balloon;
         [SerializeField]
-        virtual private Text text;  
+        private Text text;
         [SerializeField]
-        virtual private bool carnivourous;
+        private bool carnivourous;
 
-        virtual public string greeting = "";
-        virtual public string eatingSounds = "";
+        public string greeting = "";
+        public string eatingSounds = "";
 
         virtual public void Start()
         {
-            EventManager.current.Eat += EatLeaves;
             EventManager.current.SayHello += SayHello;
+            EventManager.current.DoTrick += DoTrick;
+
+            if (carnivourous) 
+                EventManager.current.EatMeat += EatMeat;
+            else 
+                EventManager.current.EatLeaves += EatLeaves;
         }
         virtual public void SayHello()
         {
             Balloon.SetActive(true);
-            text.text = "splash";
+            text.text = greeting;
+        }
+
+        virtual public string Greeting
+        {
+            get { return greeting; }
+            set { greeting = value; }
+        }
+
+        virtual public string EatingSounds
+        {
+            get { return eatingSounds; }
+            set { greeting = value; }
         }
 
         virtual public void EatLeaves()
         {
             Balloon.SetActive(true);
             text.text = "munch munch lovely";
+        }
+
+        virtual public void DoTrick()
+        {
+
         }
 
         virtual public void EatMeat()
@@ -44,7 +66,9 @@ namespace Zoo
 
         virtual public void OnDisable()
         {
-            EventManager.current.Eat -= EatLeaves;
+            EventManager.current.DoTrick -= DoTrick;
+            EventManager.current.EatMeat -= EatMeat;
+            EventManager.current.EatLeaves -= EatLeaves;
             EventManager.current.SayHello -= SayHello;
         }
     }

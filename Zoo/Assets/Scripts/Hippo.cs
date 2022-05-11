@@ -3,36 +3,38 @@ using UnityEngine.UI;
 
 namespace Zoo
 {
-    class Hippo : MonoBehaviour
+    public class Hippo : Animal
     {
-        public string name;
-        [SerializeField]
-        private GameObject Balloon;
-        [SerializeField]
-        private Text text;
+       
 
-        void Start()
-        {
-            EventManager.current.Eat += EatLeaves;
-            EventManager.current.SayHello += SayHello;
-        }
-        public void SayHello()
-        {
-            Balloon.SetActive(true);
-            text.text = "splash";
-        }
+        //public string name;
+        //[SerializeField]
+        //private GameObject Balloon;
+        //[SerializeField]
+        //private Text text;
 
-        public void EatLeaves()
-        {
-            Balloon.SetActive(true);
-            text.text = "munch munch lovely";
-        }
+        //void Start()
+        //{
+        //    EventManager.current.Eat += EatLeaves;
+        //    EventManager.current.SayHello += SayHello;
+        //}
+        //public void SayHello()
+        //{
+        //    Balloon.SetActive(true);
+        //    text.text = "splash";
+        //}
 
-        void OnDisable()
-        {
-            EventManager.current.Eat -= EatLeaves;
-            EventManager.current.SayHello -= SayHello;
-        }
+        //public void EatLeaves()
+        //{
+        //    Balloon.SetActive(true);
+        //    text.text = "munch munch lovely";
+        //}
+
+        //void OnDisable()
+        //{
+        //    EventManager.current.Eat -= EatLeaves;
+        //    EventManager.current.SayHello -= SayHello;
+        //}
     }
 
 }
