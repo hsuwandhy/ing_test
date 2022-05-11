@@ -6,28 +6,28 @@ using UnityEngine.UI;
 
 namespace Zoo
 {
+    //Parent class that regulates all the behaviour for the child objects
     public class Animal : MonoBehaviour
     {
         public string name;
         [SerializeField]
         private GameObject Balloon;
         [SerializeField]
-        private Text text;
+        public Text text;
         [SerializeField]
-        private bool carnivourous;
+        private bool carnivourous, herbivourus;
 
-        public string greeting = "";
-        public string eatingSounds = "";
+        [SerializeField] public string greeting, eatingSounds;
 
         virtual public void Start()
         {
-            EventManager.current.SayHello += SayHello;
-            EventManager.current.DoTrick += DoTrick;
+            EventManager.SayHello += SayHello;
+            EventManager.DoTrick += DoTrick;
 
-            if (carnivourous) 
-                EventManager.current.EatMeat += EatMeat;
-            else 
-                EventManager.current.EatLeaves += EatLeaves;
+            if (carnivourous)
+                EventManager.EatMeat += EatMeat;
+            if(herbivourus)
+                EventManager.EatLeaves += EatLeaves;
         }
         virtual public void SayHello()
         {
@@ -58,6 +58,7 @@ namespace Zoo
 
         }
 
+
         virtual public void EatMeat()
         {
             Balloon.SetActive(true);
@@ -66,10 +67,10 @@ namespace Zoo
 
         virtual public void OnDisable()
         {
-            EventManager.current.DoTrick -= DoTrick;
-            EventManager.current.EatMeat -= EatMeat;
-            EventManager.current.EatLeaves -= EatLeaves;
-            EventManager.current.SayHello -= SayHello;
+            EventManager.DoTrick -= DoTrick;
+            EventManager.EatMeat -= EatMeat;
+            EventManager.EatLeaves -= EatLeaves;
+            EventManager.SayHello -= SayHello;
         }
     }
 }

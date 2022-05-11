@@ -4,33 +4,16 @@ using UnityEngine.UI;
 
 namespace Zoo
 {
-    class Tiger : MonoBehaviour
+    class Tiger : Animal
     {
-        public string name;
-        [SerializeField]
-        private GameObject Balloon;
-        [SerializeField]
-        private Text text;
 
-
-        public void SayHello()
+        public override void DoTrick()
         {
-            Balloon.SetActive(true);
-            text.text = "rraaarww";
+            base.DoTrick();
+            StartCoroutine(PerformTrick());
         }
 
-        public void EatMeat()
-        {
-            Balloon.SetActive(true);
-            text.text = "nomnomnom thx wubalubadubdub";
-        }
-
-        public void PerformTrick()
-        {
-            StartCoroutine(DoTrick());
-        }
-
-        IEnumerator DoTrick()
+        IEnumerator PerformTrick()
         {
             for (int i = 0; i < 360; i++)
             {

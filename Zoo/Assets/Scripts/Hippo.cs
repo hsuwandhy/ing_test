@@ -1,40 +1,25 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.UI;
 
 namespace Zoo
 {
     public class Hippo : Animal
     {
-       
+        public override void DoTrick()
+        {
+            base.DoTrick();
+            StartCoroutine(PerformTrick());
+        }
 
-        //public string name;
-        //[SerializeField]
-        //private GameObject Balloon;
-        //[SerializeField]
-        //private Text text;
-
-        //void Start()
-        //{
-        //    EventManager.current.Eat += EatLeaves;
-        //    EventManager.current.SayHello += SayHello;
-        //}
-        //public void SayHello()
-        //{
-        //    Balloon.SetActive(true);
-        //    text.text = "splash";
-        //}
-
-        //public void EatLeaves()
-        //{
-        //    Balloon.SetActive(true);
-        //    text.text = "munch munch lovely";
-        //}
-
-        //void OnDisable()
-        //{
-        //    EventManager.current.Eat -= EatLeaves;
-        //    EventManager.current.SayHello -= SayHello;
-        //}
+        IEnumerator PerformTrick()
+        {
+            for (int i = 0; i < 360; i++)
+            {
+                transform.localRotation = Quaternion.Euler(i, 0, 0);
+                yield return new WaitForEndOfFrame();
+            }
+        }
     }
 
 }

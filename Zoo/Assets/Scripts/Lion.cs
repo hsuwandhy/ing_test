@@ -1,28 +1,25 @@
-﻿using System;
+﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
+
 namespace Zoo
 {
-    class Lion : MonoBehaviour
+    class Lion : Animal
     {
-        [SerializeField]
-        private GameObject Balloon;
-        [SerializeField]
-        private Text text;
-        public string name;
-
-
-        public void SayHello()
+        public override void DoTrick()
         {
-            Balloon.SetActive(true);
-            text.text = "roooaoaaaaar";
+            base.DoTrick();
+            StartCoroutine(PerformTrick());
         }
 
-        public void EatMeat()
+        IEnumerator PerformTrick()
         {
-            Balloon.SetActive(true);
-            text.text = "nomnomnom thx mate";
+            for (int i = 0; i < 360; i++)
+            {
+                transform.localRotation = Quaternion.Euler(i, 0, 0);
+                yield return new WaitForEndOfFrame();
+            }
         }
     }
 }

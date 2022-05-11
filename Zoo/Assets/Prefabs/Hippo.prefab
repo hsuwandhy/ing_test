@@ -105,9 +105,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64dda0b81d7157140b79833d4b894498, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: 
+  name: Hippo
   Balloon: {fileID: 1915205937995882}
   text: {fileID: 114347544836270496}
+  carnivourous: 0
+  herbivourus: 1
+  greeting: splash
+  eatingSounds: munch munch lovely
 --- !u!1 &1789159870344546
 GameObject:
   m_ObjectHideFlags: 0

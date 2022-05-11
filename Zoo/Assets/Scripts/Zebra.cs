@@ -1,28 +1,25 @@
-﻿using System;
+﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
+
 namespace Zoo
 {
-    class Zebra : MonoBehaviour
+    class Zebra : Animal
     {
-        [SerializeField]
-        private GameObject Balloon;
-        [SerializeField]
-        private Text text;
-        public string name;
-
-
-        public void SayHello()
+        public override void DoTrick()
         {
-            Balloon.SetActive(true);
-            text.text = "zebra zebra";
+            base.DoTrick();
+            StartCoroutine(PerformTrick());
         }
 
-        public void EatLeaves()
+        IEnumerator PerformTrick()
         {
-            Balloon.SetActive(true);
-            text.text = "munch munch zank yee bra";
+            for (int i = 0; i < 360; i++)
+            {
+                transform.localRotation = Quaternion.Euler(i, 0, 0);
+                yield return new WaitForEndOfFrame();
+            }
         }
     }
 }
