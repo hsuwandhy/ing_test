@@ -7,7 +7,7 @@ namespace Zoo
     public class RandomMoverInBounds : MonoBehaviour
     {
         [SerializeField]
-        private int left, right, top, bottum;
+        private int left, right, top, bottom;
         [SerializeField]
         private float speed;
 
@@ -30,7 +30,7 @@ namespace Zoo
         {
             goal = new Vector2(
                 Random.Range(left, right),
-                Random.Range(bottum, top));
+                Random.Range(bottom, top));
         }
     }
 }
