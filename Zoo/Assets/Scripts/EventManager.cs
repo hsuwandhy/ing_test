@@ -10,7 +10,6 @@ namespace Zoo
     {
         public static EventManager current;
 
-
         // Start is called before the first frame update
         public static event Action EatMeat;
         public static event Action EatLeaves;
@@ -19,12 +18,12 @@ namespace Zoo
 
         private void Awake()
         {
+
             //Check and destroys itself when multiple Eventmanager instances are detected
             if (current == null) current = this;
             else Destroy(gameObject);
 
             DontDestroyOnLoad(gameObject);
-
         }
 
  

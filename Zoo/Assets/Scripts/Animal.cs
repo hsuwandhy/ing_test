@@ -19,14 +19,20 @@ namespace Zoo
 
         [SerializeField] public string greeting, eatingSounds;
 
+        private Spawner spawner;
+
         virtual public void Start()
         {
+            //Get the spawner component from the GameCanvas game object
+            spawner = GameObject.Find("GameCanvas").GetComponent<Spawner>();
+
+
             EventManager.SayHello += SayHello;
             EventManager.DoTrick += DoTrick;
 
             if (carnivourous)
                 EventManager.EatMeat += EatMeat;
-            if(herbivourus)
+            if (herbivourus)
                 EventManager.EatLeaves += EatLeaves;
         }
         virtual public void SayHello()
@@ -55,9 +61,26 @@ namespace Zoo
 
         virtual public void DoTrick()
         {
+            if (spawner.input.text == name)
+            {
+                StartCoroutine(PerformTrick());
+                Debug.Log("name detected");
+            }
 
+            if (spawner.input.text == "") { 
+                StartCoroutine(PerformTrick());
+                Debug.Log("name empty");
+            }
         }
 
+        public IEnumerator PerformTrick()
+        {
+            for (int i = 0; i < 360; i++)
+            {
+                transform.localRotation = Quaternion.Euler(i, 0, 0);
+                yield return new WaitForEndOfFrame();
+            }
+        }
 
         virtual public void EatMeat()
         {
