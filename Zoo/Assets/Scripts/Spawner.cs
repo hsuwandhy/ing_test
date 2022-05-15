@@ -13,8 +13,6 @@ namespace Zoo
         [SerializeField]
         public InputField input;
 
-        //public List<Animal> animalsList = new List<Animal>();
-
         private void Start()
         {
             Lion henk = Instantiate(lion, transform).GetComponent<Lion>();
@@ -45,10 +43,5 @@ namespace Zoo
             george.name = "george";
             //AddToList(george);
         }
-
-        //public void AddToList(Animal item)
-        //{
-        //    animalsList.Add(item);
-        //}
     }
 }

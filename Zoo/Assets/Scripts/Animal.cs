@@ -37,8 +37,17 @@ namespace Zoo
         }
         virtual public void SayHello()
         {
-            Balloon.SetActive(true);
-            text.text = greeting;
+            if (spawner.input.text == name)
+            {
+                Balloon.SetActive(true);
+                text.text = greeting;
+            }
+
+            if (spawner.input.text == "")
+            {
+                Balloon.SetActive(true);
+                text.text = greeting;
+            }
         }
 
         virtual public string Greeting
@@ -61,19 +70,10 @@ namespace Zoo
 
         virtual public void DoTrick()
         {
-            if (spawner.input.text == name)
-            {
-                StartCoroutine(PerformTrick());
-                Debug.Log("name detected");
-            }
-
-            if (spawner.input.text == "") { 
-                StartCoroutine(PerformTrick());
-                Debug.Log("name empty");
-            }
+            StartCoroutine(PerformTrick());
         }
 
-        public IEnumerator PerformTrick()
+        virtual public IEnumerator PerformTrick()
         {
             for (int i = 0; i < 360; i++)
             {
