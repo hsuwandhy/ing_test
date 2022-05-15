@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Zoo
 {
@@ -8,6 +9,9 @@ namespace Zoo
     {
         [SerializeField]
         private GameObject lion, hippo, pig, tiger, zebra, elephant, monkey;
+
+        [SerializeField]
+        private InputField input;
         private void Start()
         {
             Lion henk = Instantiate(lion, transform).GetComponent<Lion>();
@@ -25,5 +29,11 @@ namespace Zoo
             Monkey george = Instantiate(monkey, transform).GetComponent<Monkey>();
             george.name = "george";
         }
+
+        private void Update()
+        {
+            Debug.Log(input.text);
+        }
+
     }
 }
